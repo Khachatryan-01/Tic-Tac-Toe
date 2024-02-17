@@ -2,6 +2,10 @@ const wrapper = document.createElement("div");
 wrapper.classList.add("wrapper");
 document.body.append(wrapper);
 
+const title = document.createElement("h2");
+title.innerText = "Tic Tac Toe";
+wrapper.append(title);
+
 const board = document.createElement("div");
 board.classList.add("board");
 wrapper.append(board);
@@ -23,10 +27,11 @@ for (let y = 0; y < 3; y++) {
         button.addEventListener("click", (e) => {
             
             if (window.character === undefined) {
-                button.innerText = "X"
+                button.innerText = "X";
             }
             else if (window.character === "X") {
                 button.innerText = "O"
+
             } else {
                 button.innerText = "X"
             }
