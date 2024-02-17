@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -12,25 +12,29 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(51,56,63);
+    background-color: rgb(51, 56, 63);
 }
 
 h2 {
-    font-size: 70px;
+    font-family: "Micro 5", sans-serif;
+    font-size: 120px;
     color: #fca311;
 }
 
-.wrapper > .board {
-    width: 30%;
-    height: 55%;
+.wrapper>.board {
+    width: 25%;
+    height: 50%;
+    padding: 25px;
+    gap: 25px;
     display: flex;
     flex-direction: column;
-    background-color: rgb(233,233,233);
-    background-color: black;
+    box-shadow: 5px 5px 10px black;
+    background-color: #3d405b;
     border-radius: 10px;
 }
 
 .row {
+    gap: 25px;
     display: flex;
     flex: 1;
 }
@@ -43,9 +47,9 @@ h2 {
 }
 
 .button {
-    width: 70%;
-    height: 70%;
-    font-size: 35px;
+    height: 100%;
+    flex: 1;
+    font-size: 45px;
     font-weight: bold;
     color: #fca311;
     background-color: #14213d;
