@@ -21,7 +21,7 @@ h2 {
     color: #fca311;
 }
 
-.wrapper>.board {
+.wrapper > .board {
     width: 25%;
     height: 50%;
     padding: 25px;
