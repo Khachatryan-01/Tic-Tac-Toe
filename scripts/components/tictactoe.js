@@ -1,16 +1,8 @@
-class TicTacToe {
+class TicTacToe extends Base {
     constructor(container) {
+        super("div", undefined, "wrapper", container);
 
-        this.element = document.createElement("div");
-        this.element.classList.add("wrapper");
-
-        const title = document.createElement("h2");
-        title.innerText = "Tic Tac Toe";
-        this.element.append(title);
-
-        new Board(this.element)
-
-        container.append(this.element);
-
+        this.title = new Title(this.element, "Tic Tac Toe");
+        this.board = new Board(this.element);
     }
 }

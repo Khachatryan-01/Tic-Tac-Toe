@@ -1,13 +1,11 @@
-class Box {
+class Box extends Base {
     constructor(container) {
+        super("div", undefined, "box", container);
 
-        this.element = document.createElement("div");
-        this.element.classList.add("box");
+        this.button = new Button(this.element, "button")
+    }
 
-        this.button = document.createElement("button");
-        this.button.classList.add("button");
-        this.element.append(this.button);
-
-        container.append(this.element);
+    addButtonEvent(event, func) {
+        this.button.addEvent(event, func);
     }
 }

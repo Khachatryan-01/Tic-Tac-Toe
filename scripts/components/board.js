@@ -1,35 +1,32 @@
-class Board {
+class Board extends Base {
     constructor(container) {
+        super("div", undefined, "board", container);
 
-        this.element = document.createElement("div");
-        this.element.classList.add("board");
-
-        const matrix = [
+        this.matrix = [
             [0, 0, 0],
             [0, 0, 0],
             [0, 0, 0]
         ];
 
-        for (let y = 0; y < matrix.length; y++) {
-            this.row = new Wrapper(this.element);
-            this.row.element.classList.add("row");
+        for (let y = 0; y < this.matrix.length; y++) {
+            this.row = new Wrapper(this.element, "row");
 
-            for (let x = 0; x < matrix[y].length; x++) {
+            for (let x = 0; x < this.matrix[y].length; x++) {
                 const box = new Box(this.row.element);
 
-                box.button.addEventListener("click", (e) => {
+                box.addButtonEvent("click", (e) => {
                     const btn = e.target;
 
                     if (btn.innerText) {
                         return;
                     }
-                    if (window.lastPlayer === "X") {
-                        box.button.innerText = "O";
-                        matrix[y][x] = 2;
+                    if (this.lastPlayer === "X") {
+                        btn.innerText = "O";
+                        this.matrix[y][x] = 2;
                     }
                     else {
-                        box.button.innerText = "X";
-                        matrix[y][x] = 1;
+                        btn.innerText = "X";
+                        this.matrix[y][x] = 1;
                     }
 
                     // bool=fasle
@@ -39,11 +36,11 @@ class Board {
                     let player_1 = true;
                     let player_2 = true;
 
-                    for (let i = 0; i < matrix.length; i++) {
-                        if (matrix[y][i] !== 1) {
+                    for (let i = 0; i < this.matrix.length; i++) {
+                        if (this.matrix[y][i] !== 1) {
                             player_1 = false;
                         }
-                        if (matrix[y][i] !== 2) {
+                        if (this.matrix[y][i] !== 2) {
                             player_2 = false;
                         }
                     }
@@ -53,17 +50,17 @@ class Board {
                         player_1 = true;
                         player_2 = true;
 
-                        for (let i = 0; i < matrix.length; i++) {
-                            if (matrix[i][x] !== 1) {
+                        for (let i = 0; i < this.matrix.length; i++) {
+                            if (this.matrix[i][x] !== 1) {
                                 player_1 = false;
                             }
-                            if (matrix[i][x] !== 2) {
+                            if (this.matrix[i][x] !== 2) {
                                 player_2 = false;
                             }
                         }
                     }
 
-                    let isPrimary = y + x === matrix.length - 1;
+                    let isPrimary = y + x === this.matrix.length - 1;
                     let isSecondary = y === x;
 
                     if (!player_1 && !player_2 && isSecondary) {
@@ -71,11 +68,11 @@ class Board {
                         player_1 = true;
                         player_2 = true;
 
-                        for (let i = 0; i < matrix.length; i++) {
-                            if (matrix[i][i] !== 1) {
+                        for (let i = 0; i < this.matrix.length; i++) {
+                            if (this.matrix[i][i] !== 1) {
                                 player_1 = false;
                             }
-                            if (matrix[i][i] !== 2) {
+                            if (this.matrix[i][i] !== 2) {
                                 player_2 = false;
                             }
                         }
@@ -86,11 +83,11 @@ class Board {
                         player_1 = true;
                         player_2 = true;
 
-                        for (let i = 0; i < matrix.length; i++) {
-                            if (matrix[i][matrix.length - 1 - i] !== 1) {
+                        for (let i = 0; i < this.matrix.length; i++) {
+                            if (this.matrix[i][this.matrix.length - 1 - i] !== 1) {
                                 player_1 = false;
                             }
-                            if (matrix[i][matrix.length - 1 - i] !== 2) {
+                            if (this.matrix[i][this.matrix.length - 1 - i] !== 2) {
                                 player_2 = false;
                             }
                         }
@@ -102,10 +99,9 @@ class Board {
                         alert("Player 'O' WIN");
                     }
 
-                    window.lastPlayer = btn.innerText;
+                    this.lastPlayer = btn.innerText;
                 });
             }
         }
-        container.append(this.element);
     }
 }
