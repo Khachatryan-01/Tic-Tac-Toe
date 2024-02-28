@@ -1,9 +1,14 @@
 class Board extends Base {
 
-    constructor(container, onFinish) {
-        super("div", undefined, "board", container);
+    constructor(container, onGameOver) {
+        super({
+            tagName: "div",
+            className: "board",
+            container
+        });
 
-        this.onFinish = onFinish
+        this.onGameOver = onGameOver;
+
         this.matrix = [
             [0, 0, 0],
             [0, 0, 0],
@@ -38,20 +43,11 @@ class Board extends Base {
         }
     }
 
-
-
     updateGameStatus(x, y) {
         const gameStatus = this.chackGameStatus(x, y);
 
-        if (gameStatus.win) {
-            alert(`Player ${gameStatus.player} - WIN`);
-        }
-        else if (gameStatus.draw) {
-            alert("Draw!");
-        }
-
         if (gameStatus.win || gameStatus.draw) {
-            this.onFinish();
+            this.onGameOver(gameStatus);
         }
     }
 
@@ -59,7 +55,7 @@ class Board extends Base {
         const gameStatus = this.checkWin(x, y);
 
         if (!gameStatus.win) {
-            gameStatus.draw = this.checkDraw()
+            gameStatus.draw = this.checkDraw();
         }
 
         return gameStatus;

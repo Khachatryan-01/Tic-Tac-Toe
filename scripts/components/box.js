@@ -1,8 +1,12 @@
 class Box extends Base {
     constructor(container) {
-        super("div", undefined, "box", container);
+        super({
+            tagName: "div",
+            className: "box",
+            container
+        });
 
-        this.button = new Button(this.element, "button")
+        this.button = new Button(this.element, "button");
     }
 
     addButtonEvent(event, func) {

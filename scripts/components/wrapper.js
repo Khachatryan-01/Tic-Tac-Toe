@@ -1,6 +1,10 @@
 class Wrapper extends Base {
     constructor(container, className) {
-        super("div", undefined, className, container);
+        super({
+            tagName: "div",
+            className,
+            container
+        });
     }
 }
 

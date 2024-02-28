@@ -1,10 +1,10 @@
 class Button extends Base {
-    constructor(container, className) {
-        super("button", undefined, className, container);
+    constructor(container, className, text) {
+        super({
+            tagName: "button",
+            text,
+            className,
+            container
+        });
     }
-
-    addEvent(event,func) {
-        this.element.addEventListener(event, func);
-    }
-
 }
