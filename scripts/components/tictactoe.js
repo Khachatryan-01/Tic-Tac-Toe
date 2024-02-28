@@ -1,18 +1,22 @@
 class TicTacToe extends Base {
-    constructor(container) {
+    constructor({ container }) {
         super({
             tagName: "div",
             className: "wrapper",
             container
         });
 
-        this.title = new Title(this.element, "Tic Tac Toe");
+        this.title = new Title({ text: "Tic Tac Toe", container: this });
         this.recreateBoard();
 
-        this.popup = new Popup(this.element, () => {
-            this.recreateBoard();
+        this.popup = new Popup({
+            onClose: () => {
+                this.recreateBoard();
 
-            this.popup.removeClass("show");
+                this.popup.removeClass("show");
+            },
+
+            container: this
         });
     }
 
@@ -21,7 +25,10 @@ class TicTacToe extends Base {
             this.board.remove();
         }
 
-        this.board = new Board(this.element, this.onGameOver.bind(this));
+        this.board = new Board({
+            onGameOver: this.onGameOver.bind(this),
+            container: this
+        });
     }
 
     onGameOver(gameStatus) {

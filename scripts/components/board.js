@@ -1,6 +1,6 @@
 class Board extends Base {
 
-    constructor(container, onGameOver) {
+    constructor({ onGameOver, container }) {
         super({
             tagName: "div",
             className: "board",
@@ -16,10 +16,10 @@ class Board extends Base {
         ];
 
         for (let y = 0; y < this.matrix.length; y++) {
-            const row = new Wrapper(this.element, "row");
+            const row = new Wrapper({ className: "row", container: this });
 
             for (let x = 0; x < this.matrix[y].length; x++) {
-                const box = new Box(row.element);
+                const box = new Box({ container: row });
 
                 box.addButtonEvent("click", (e) => {
                     const btn = e.target;

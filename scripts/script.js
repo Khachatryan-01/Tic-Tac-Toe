@@ -1,1 +1,1 @@
-const tictactoe = new TicTacToe(document.body);
+const tictactoe = new TicTacToe({ container: document.body });

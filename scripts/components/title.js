@@ -1,5 +1,5 @@
 class Title extends Base {
-    constructor(container, text, className) {
+    constructor({ text, className, container }) {
         super({
             tagName: "h2",
             text,

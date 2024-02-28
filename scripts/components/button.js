@@ -1,5 +1,5 @@
 class Button extends Base {
-    constructor(container, className, text) {
+    constructor({ className, text, container }) {
         super({
             tagName: "button",
             text,

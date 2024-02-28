@@ -1,5 +1,5 @@
 class Wrapper extends Base {
-    constructor(container, className) {
+    constructor({ className, container }) {
         super({
             tagName: "div",
             className,
@@ -7,5 +7,3 @@ class Wrapper extends Base {
         });
     }
 }
-
-

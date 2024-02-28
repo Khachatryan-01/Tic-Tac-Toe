@@ -1,14 +1,14 @@
 class Popup extends Base {
-    constructor(container, onClose) {
+    constructor({ onClose, container }) {
         super({
             tagName: "div",
             className: "popup",
             container
         });
-        
-        this.wrapper = new Wrapper(this.element, "popupContainer");
-        this.winnerName = new Title(this.wrapper.element, "", "winner");
-        this.button = new Button(this.wrapper.element, "popupButton", "OK");
+
+        this.wrapper = new Wrapper({ className: "popupContainer", container: this });
+        this.winnerName = new Title({ className: "winner", container: this.wrapper });
+        this.button = new Button({ className: "popupButton", text: "OK", container: this.wrapper });
         this.button.addEvent("click", onClose);
     }
 

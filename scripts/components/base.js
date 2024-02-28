@@ -1,17 +1,25 @@
 class Base {
-    constructor(options) {
-
-        this.element = document.createElement(options.tagName);
-
-        if (options.text !== undefined) {
-            this.changeText(options.text);
+    constructor({ tagName, text, className, container } = {}) {
+        if (this.constructor === Base) {
+            throw new Error("Base class is an Abstract class!");
         }
 
-        if (options.className !== undefined) {
-            this.addClass(options.className);
+        this.element = document.createElement(tagName);
+
+        if (text !== undefined) {
+            this.changeText(text);
         }
 
-        options.container.append(this.element);
+        if (className !== undefined) {
+            this.addClass(className);
+        }
+
+        if (container instanceof HTMLElement) {
+            container.append(this.element);
+        }
+        else if (container instanceof Base) {
+            container.element.append(this.element);
+        }
     }
 
     changeText(text) {
